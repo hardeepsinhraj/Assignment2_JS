@@ -1,5 +1,11 @@
 // Smoothie class following best practices from class
 class Smoothie {
+  //class properties
+   base;
+   ingredients;
+   size;  
+   instructions;
+   //claas constructor
     constructor(base, ingredients, size, instructions) {
         this.base = base;
         this.ingredients = ingredients;
@@ -10,7 +16,7 @@ class Smoothie {
   //calculate price of smoothie
     calculatePrice() {
         let basePrice = 3; 
-        let sizePrice = 0;// price based on size
+        let sizePrice;// price based on size
         if (this.size === "small") {
             sizePrice = 5.00;
         } else if (this.size === "medium") {
@@ -35,15 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
       let size = document.getElementById("size").value;
       let instructions = document.getElementById("instructions").value;
   
-      // Get checked ingredients (using for loop instead of Array.from)
+      // Get checked ingredients from checkboxes
       let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
       let ingredients = [];
       for (let i = 0; i < checkboxes.length; i++) {
         ingredients.push(checkboxes[i].value);
       }
   
-      // Ensure that at least one ingredient is selected
-      if (ingredients.length === 0) {
+      // Validate inputs
+    if (ingredients.length === 0) {
         alert("Please select at least one ingredient.");
         return; // Stop execution if no ingredients are selected
       }
@@ -53,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
       // Output the result
       let output = document.getElementById("output");
-      output.innerHTML = ""; // clear previous output
+      output.textContent = ""; // clear previous output
       let p = document.createElement("p");
       p.textContent = mySmoothie.describe();
       output.appendChild(p);

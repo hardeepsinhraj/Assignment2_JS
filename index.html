@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <title>Smoothie Machine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css"> <!--link the css-->
+    <script src="js/script.js" defer></script> <!--link the javascript-->
 </head>
 <body>
     <header>
         <h1>Smoothie Machine</h1>
+        <h3>Build Your Smoothie</h3>
      </header>   
-    <h3>Build Your Smoothie</h3>
+     <!-- Make smoothie order form -->
     <form id="orderform">
         <label>Choose Base:</label>
         <select id="base">
@@ -22,6 +24,7 @@
         </br>
         <label>Choose Ingredients ($1.50 each):</label>
       </br>
+      <!-- Indredients for smoothie -->
         <input type="checkbox" value="Banana"> Banana<br>
         <input type="checkbox" value="Strawberry"> Strawberry<br>
         <input type="checkbox" value="Mango"> Mango<br>
@@ -33,18 +36,22 @@
         <input type="checkbox" value="Avocado"> Avocado<br>
 
     </br>
+    <!-- smoothie size selection -->
         <label>Size:</label>
+        <p>*Diffrent price for diffrent sizes</p>
         <select id="size">
-            <option value="Small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
+            <option value="Small">Small($5.00)</option>
+            <option value="medium">Medium($10.00)</option>
+            <option value="large">Large($15.00)</option>
         </select>
         <br>
+        <!-- for special reqvest -->
         <label>Special Instructions:</label>
         <br>
         <textarea id="instructions" rows="4" cols="30" placeholder="No sugar, extra ice, etc."></textarea>
         <br>
         <br>
+        <!-- Button to submit order -->
         <button type="button" id="orderBtn">Order Smoothie</button>
     </form>
 
