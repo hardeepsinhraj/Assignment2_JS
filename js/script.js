@@ -27,3 +27,35 @@ class Smoothie {
         return `A ${this.size} smoothie with ${this.base}, ingredients: ${this.ingredients.join(", ")}, Special Instructions: ${this.instructions}. Total Price: $${this.price.toFixed(2)}`;
     }
   }
+
+ // Wait for DOM to load
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("orderBtn").addEventListener("click", function () {
+      let base = document.getElementById("base").value;
+      let size = document.getElementById("size").value;
+      let instructions = document.getElementById("instructions").value;
+  
+      // Get checked ingredients (using for loop instead of Array.from)
+      let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      let ingredients = [];
+      for (let i = 0; i < checkboxes.length; i++) {
+        ingredients.push(checkboxes[i].value);
+      }
+  
+      // Ensure that at least one ingredient is selected
+      if (ingredients.length === 0) {
+        alert("Please select at least one ingredient.");
+        return; // Stop execution if no ingredients are selected
+      }
+  
+      // Create Smoothie object
+      let mySmoothie = new Smoothie(base, ingredients, size, instructions);
+  
+      // Output the result
+      let output = document.getElementById("output");
+      output.innerHTML = ""; // clear previous output
+      let p = document.createElement("p");
+      p.textContent = mySmoothie.describe();
+      output.appendChild(p);
+    });
+  });
